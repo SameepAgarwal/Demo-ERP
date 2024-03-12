@@ -3,7 +3,8 @@ import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import Section from '../Components/Section';
 import { useGlobalData } from "../Reducers/dashboardReducer";
-import { BACKEND_LINK } from "../Importants";
+import { BACKEND_LINK, DEFAULT_LOGO_IMG_LINK } from "../Importants";
+import { useUserData } from "../Reducers/userProvider";
 
 
 var delay_in_menu_open = '800';
@@ -65,6 +66,7 @@ const menu = () => {
     const navigate = useNavigate();
     const universityName = "Madan Mohan Malaviya University of Technology";
     const universityLogo = "http://mmmut.ac.in/images/largelogo.jpg";
+    const { user_state, user_dispatch } = useUserData();
     // const [isSectionShowing, setIsSectionShowing] = useState(false);
 
     const openMenu = (event) => {
@@ -128,7 +130,11 @@ const menu = () => {
             <h3 onClick={() => {
                 console.log({ Cookies: document.cookie });
             }}>{universityName}</h3>
-            <img src={universityLogo} alt="university logo" height={"40px"} width={"40px"} />
+            {
+                user_state.user.school_logo_url ?
+                    <img src={user_state.user.school_logo_url} alt="university logo" height={"40px"} width={"40px"} /> :
+                    <img src={DEFAULT_LOGO_IMG_LINK} alt="logo" height={"40px"} width={"40px"} />
+            }
             {
                 isMenuOpen ?
                     <div style={{ position: "absolute", top: "68px", left: "0", backgroundColor: "rgb(57 57 56 / 20%)", height: "100vh-68px", width: "100vw" }}>

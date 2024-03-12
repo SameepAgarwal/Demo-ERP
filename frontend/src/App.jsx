@@ -9,6 +9,7 @@ import Basefile from './Components/Basefile';
 import Print from './Components/print';
 import SignIn from './Components/SignIn';
 import LogIn from './Components/login';
+import Notfound from './Components/Notfound';
 
 function App() {
   const [count, setCount] = useState(0);
@@ -50,6 +51,9 @@ function App() {
         } />
         <Route path='/print' element={
           <Print />
+        } />
+        <Route path='/*' element={
+          <Notfound />
         } />
       </Routes>
     </BrowserRouter>

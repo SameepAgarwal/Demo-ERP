@@ -3,12 +3,13 @@ import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import Section from '../Components/Section';
 import { useGlobalData } from "../Reducers/dashboardReducer";
+import { BACKEND_LINK } from "../Importants";
 
 
 var delay_in_menu_open = '800';
 var delay_in_menu_open_in_time = delay_in_menu_open + 'ms';
 
-const BACKEND_LINK = 'http://localhost:8000';
+// const BACKEND_LINK = 'http://localhost:8000';
 
 const DIV = styled.div`
     display: flex;

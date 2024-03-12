@@ -3,8 +3,9 @@ import styled from "styled-components";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { useClassData } from "../Reducers/classProvider";
 import { useUserData } from "../Reducers/userProvider";
+import { BACKEND_LINK } from "../Importants";
 
-const BACKEND_LINK = 'http://localhost:8000';
+// const BACKEND_LINK = 'http://localhost:8000';
 
 const Section = () => {
 

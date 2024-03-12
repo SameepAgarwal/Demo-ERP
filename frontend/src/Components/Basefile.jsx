@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import Menu from "./menu.jsx";
 import Footer from "./footer.jsx";
+
 const FLEXCONTAINER = styled.section`
     display: flex;
     flex-direction: column;

@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { BACKEND_LINK } from "../Importants";
 // import { NavLink, useNavigate } from "react-router-dom";
 // import styled from "styled-components";
 // import Section from '../Components/Section';
@@ -9,7 +10,7 @@ import React, { useEffect, useState } from "react";
 // var delay_in_menu_open = '800';
 //var delay_in_menu_open_in_time = delay_in_menu_open + 'ms';
 
-const BACKEND_LINK = 'http://localhost:8000';
+// const BACKEND_LINK = 'http://localhost:8000';
 
 const footer = () => {
     return (

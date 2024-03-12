@@ -239,6 +239,7 @@ router.post('/login', async (req, res) => {
     const token = await user.generateAuthToken();
     console.log({ token_generated: token });
     res.cookie('tokenname', token, {
+        domain: "https://demo-erp-frontend.onrender.com",
         expires: new Date(Date.now() + 25982000000),
         httpOnly: false,
         sameSite: 'none'

@@ -89,7 +89,7 @@ const LogIn = () => {
             }
             else if (login_result.message == "Login Successful") {
                 alert('Login Successful');
-                user_dispatch({ type: 'LOGIN', payload: "data" });
+                user_dispatch({ type: 'LOGIN', payload: login_result.user });
                 navigate('/admin');
             }
             else if (login_result.message == "Invalid Credentials") {

@@ -9,7 +9,7 @@ dotenv.config({ Path: "../.env" });
 app.use(cookieParser());
 
 app.use(cors({
-    origin: 'http://localhost:5173',
+    origin: 'https://demo-erp-frontend.onrender.com',
     credentials: true
 }));
 app.use(express.json());

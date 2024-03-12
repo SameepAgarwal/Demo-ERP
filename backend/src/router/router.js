@@ -251,7 +251,7 @@ const authenticate = async (req, res, next) => {
     // console.log({ cookies: req.cookies });
     try {
         const token_in_cookie = req.cookies.tokenname;
-        // console.log(token_in_cookie);
+        console.log(token_in_cookie);
         const verify_token = jwt.verify(token_in_cookie, process.env.SECRET_KEY);
         const user = await UserModel.findOne({ _id: verify_token._id, "tokens.token": token_in_cookie });
 
@@ -277,6 +277,6 @@ router.get('/getlogin', authenticate, (req, res) => {
 });
 
 router.get('/logout', authenticate, (req, res) => {
-    res.clearCookie('tokenname').status(200).send("User Logged Out");
+    res.clearCookie('tokenname').status(200).send({ message: "logout successful" });
 });
 module.exports = (router);

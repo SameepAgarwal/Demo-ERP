@@ -57,15 +57,52 @@ const LISTITEM = styled.li`
     margin: 0.4rem 0rem ;
 `;
 
+const IMAGE_DIV = styled.div`
+    height: 100%;
+    position: relative;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+
+    .logo_more_options_div{
+        display: none;
+        position: absolute;
+        right: 0;
+        top: 100%;
+        background-color: #242424;
+        border: 1px solid white;
+        width: 10.27rem;
+
+        ul{
+            list-style: none;
+            width: 100%;
+            /* position: relative;
+            right: 20px; */
+            padding: 0;
+            list-style-position: inside;
+            li{
+                font-size: 1rem;
+                padding: 2px 10px;
+                cursor: pointer;
+                &:hover{
+                    background-color: #2e2e2e;
+                }
+            }
+        }
+    }
+`;
+
 
 const menu = () => {
 
     // const { state, dispatch } = useGlobalData();
     const [isMenuOpen, setIsMenuOpen] = useState(false);
+    const [isMoreOptionOpen, setIsMoreOptionOpen] = useState(false);
     const location = useLocation();
     const navigate = useNavigate();
-    const universityName = "Madan Mohan Malaviya University of Technology";
-    const universityLogo = "http://mmmut.ac.in/images/largelogo.jpg";
+    // const universityName = "Madan Mohan Malaviya University of Technology";
+    // const universityLogo = "http://mmmut.ac.in/images/largelogo.jpg";
     const { user_state, user_dispatch } = useUserData();
     // const [isSectionShowing, setIsSectionShowing] = useState(false);
 
@@ -99,6 +136,36 @@ const menu = () => {
         // background_effect.style["z-index"] = -1;
     };
 
+    const openMoreOptions = () => {
+        var options_div = document.querySelector('.logo_more_options_div');
+        options_div.style.display = 'none';
+        setIsMoreOptionOpen(false);
+    };
+
+    const closeMoreOptions = () => {
+        var options_div = document.querySelector('.logo_more_options_div');
+        options_div.style.display = 'block';
+        setIsMoreOptionOpen(true);
+    };
+
+    const logoutUser = async () => {
+        const result = await fetch(`${BACKEND_LINK}/logout`, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            credentials: 'include'
+        });
+        const user_logout = await result.json();
+
+        if (user_logout.message == "logout successful") {
+            navigate('/');
+            alert("Logout Successfully");
+        }
+        else {
+            alert("Logout Unsuccessful");
+        }
+    };
     return (
         <DIV>
             <i className="fa-solid fa-bars menu_bar" style={{ cursor: 'pointer' }} onClick={(event) => openMenu(event)}></i>
@@ -127,12 +194,32 @@ const menu = () => {
                 </ul>
 
             </MENU>
-            <h3 onClick={() => {
-                console.log({ Cookies: document.cookie });
-            }}>{universityName}</h3>
             {
-                user_state.user.school_logo_url ?
-                    <img src={user_state.user.school_logo_url} alt="university logo" height={"40px"} width={"40px"} /> :
+                user_state.isAuthenticated && user_state.user.school_name ?
+                    <h3 onClick={() => {
+                        console.log({ Cookies: document.cookie });
+                    }}>{user_state.user.school_name}</h3> : null
+            }
+            {
+                user_state.isAuthenticated && user_state.user.school_logo_url ?
+                    <IMAGE_DIV onClick={() => {
+                        if (isMoreOptionOpen) {
+                            openMoreOptions();
+                        }
+                        else {
+                            closeMoreOptions();
+                        }
+                    }}>
+                        <img src={user_state.user.school_logo_url} alt="university logo" height={"40px"} width={"40px"} />
+                        <div className="logo_more_options_div">
+                            <ul>
+                                <li>Profile</li>
+                                <li>Change Password</li>
+                                <li onClick={logoutUser}>Logout</li>
+                            </ul>
+                        </div>
+                    </IMAGE_DIV>
+                    :
                     <img src={DEFAULT_LOGO_IMG_LINK} alt="logo" height={"40px"} width={"40px"} />
             }
             {

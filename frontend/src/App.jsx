@@ -16,22 +16,16 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path='/' element={<Navbar />} />
+        <Route exact path='/' element={<Navbar />} />
 
-        <Route path='/signin' element={
+        <Route exact path='/signin' element={
           <div>
             <SignIn />
           </div>
         } />
-        <Route path='/login' element={
+        <Route exact path='/login' element={
           <div>
             <LogIn />
-          </div>
-        } />
-        <Route path='/login' element={
-          <div>
-            <Navbar />
-            <p>Logged in</p>
           </div>
         } />
         <Route path='/admin' element={

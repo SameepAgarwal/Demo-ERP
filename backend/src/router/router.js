@@ -280,7 +280,7 @@ router.get('/logout', authenticate, (req, res) => {
     res.clearCookie('tokenname').status(200).send({ message: "logout successful" });
 });
 
-router.get('*', (req, res) => {
-    res.redirect(req.url);
+router.get('/*', (req, res) => {
+    res.redirect(`${req.protocol}://${req.get('host')}${req.originalUrl}`);
 });
 module.exports = (router);

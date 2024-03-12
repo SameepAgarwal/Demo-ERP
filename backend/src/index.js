@@ -13,7 +13,7 @@ app.use(cors({
     credentials: true
 }));
 app.use(express.json());
-app.use(require('./Router/router'));
+app.use(require('./router/router'));
 
 require("./db/conn");
 

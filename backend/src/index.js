@@ -1,7 +1,7 @@
 const express = require('express');
 const app = express();
 const cookieParser = require('cookie-parser');
-const PORT = 8000;
+const PORT = process.env.PORT || 8000;
 const BACKEND_LINK = `localhost:${PORT}`;
 const cors = require('cors');
 const dotenv = require('dotenv');

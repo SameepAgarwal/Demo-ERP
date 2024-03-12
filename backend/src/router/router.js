@@ -8,9 +8,9 @@ router.get('/', (req, res) => {
     res.send('Hii from this Side');
 });
 
-router.get('/getdata', (req, res) => {
-    var body = req.body;
-    res.send(body);
+router.get('/getdata', async (req, res) => {
+    const data = await ClassModel.find();
+    res.send(data);
 });
 
 router.get('/allclasses/:user_id', async (req, res) => {

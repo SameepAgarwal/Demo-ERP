@@ -240,6 +240,7 @@ router.post('/login', async (req, res) => {
     console.log({ token_generated: token });
 
     res.cookie('tokenname', token, {
+        domain: "demo-erp-frontend.onrender.com",
         expires: new Date(Date.now() + 25982000000),
         httpOnly: false
     });

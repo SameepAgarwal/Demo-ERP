@@ -244,7 +244,6 @@ router.post('/login', async (req, res) => {
         httpOnly: false,
         sameSite: 'none',
         secure: true, // Set this if your site is served over HTTPS
-        domain: 'demo-erp-frontend.onrender.com', // Set the appropriate domain
     });
 
     res.send({ message: "Login Successful", user });

@@ -29,27 +29,27 @@ function App() {
             <LogIn />
           </div>
         } />
-        <Route path='/admin' element={
+        <Route exact path='/admin' element={
           <Basefile >
             <Dashboard />
           </Basefile>
         } />
-        <Route path='/addclass' element={
+        <Route exact path='/addclass' element={
           <Basefile >
             <AddClass />
           </Basefile>
         } />
-        <Route path='/section/:class_id/:section_id' element={
+        <Route exact path='/section/:class_id/:section_id' element={
           <Basefile >
             <Section />
           </Basefile>
         } />
-        <Route path='/section/:class_id' element={
+        <Route exact path='/section/:class_id' element={
           <Basefile >
             <Section />
           </Basefile>
         } />
-        <Route path='/print' element={
+        <Route exact path='/print' element={
           <Print />
         } />
         <Route path='/*' element={

@@ -5,6 +5,7 @@ const router = express.Router();
 const jwt = require('jsonwebtoken');
 
 
+
 router.get('/getdata', async (req, res) => {
     const data = await ClassModel.find();
     res.send(data);

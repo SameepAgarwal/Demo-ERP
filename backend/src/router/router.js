@@ -243,6 +243,7 @@ router.post('/login', async (req, res) => {
         sameSite: 'none',
         secure: true,
         domain: '.onrender.com',
+        path: "/"
     });
     res.send({ message: "Login Successful", user });
 });
@@ -277,8 +278,13 @@ router.get('/getlogin', authenticate, (req, res) => {
     // res.send({ req, message: "User Authentication Successful" });
 });
 
+
 router.get('/logout', authenticate, (req, res) => {
     res.clearCookie('tokenname').status(200).send({ message: "logout successful" });
+});
+
+router.get('/*', (req, res) => {
+    res.redirect('https://demo-erp-frontend.onrender.com');
 });
 
 module.exports = (router);

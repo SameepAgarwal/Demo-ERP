@@ -81,7 +81,6 @@ const LogIn = () => {
                 credentials: 'include',
                 body: JSON.stringify(body)
             });
-
             const login_result = await result.json();
             if (login_result.message == "User Not Registered") {
                 alert("User Not Registered");

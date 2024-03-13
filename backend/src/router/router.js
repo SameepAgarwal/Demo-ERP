@@ -241,11 +241,8 @@ router.post('/login', async (req, res) => {
 
     res.cookie('tokenname', token, {
         expires: new Date(Date.now() + 25982000000),
-        httpOnly: false,
-        sameSite: 'none',
-        secure: true, // Set this if your site is served over HTTPS
+        httpOnly: false
     });
-
     res.send({ message: "Login Successful", user });
 });
 
